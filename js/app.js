@@ -188,7 +188,7 @@
       if (mode === 'expensive') result.sort((a,b) => b.price - a.price);
       if (mode === 'name') result.sort((a,b) => a.name.localeCompare(b.name, 'ru'));
       count.textContent = `Найдено: ${result.length} ${productWord(result.length)}`;
-      grid.innerHTML = result.length ? result.map(productCard).join('') : `<div class="col-12"><div class="empty-state"><div class="display-6 mb-2">⌕</div><h3 class="h5 text-dark">Ничего не найдено</h3><p class="mb-3">Измени фильтры или сбрось параметры поиска.</p><button class="btn btn-outline-primary" type="button" data-filter-reset>Сбросить фильтры</button></div></div>`;
+      grid.innerHTML = result.length ? result.map(product => productCard(product)).join('') : `<div class="col-12"><div class="empty-state"><div class="display-6 mb-2">⌕</div><h3 class="h5 text-dark">Ничего не найдено</h3><p class="mb-3">Измени фильтры или сбрось параметры поиска.</p><button class="btn btn-outline-primary" type="button" data-filter-reset>Сбросить фильтры</button></div></div>`;
       fallbackImages(grid);
     };
     search?.addEventListener('input', () => { quickFilter = ''; apply(); });
